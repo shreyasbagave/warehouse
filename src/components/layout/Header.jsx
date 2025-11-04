@@ -22,7 +22,7 @@ const Header = ({ onMenuToggle, isMenuOpen }) => {
   }
 
   return (
-    <header className="bg-white shadow-sm border-b border-gray-200 fixed top-0 left-0 right-0 z-50 h-16 sm:h-20">
+    <header className="bg-white shadow-sm border-b border-gray-200 fixed top-0 left-0 right-0 z-50 h-16 sm:h-20 lg:h-16">
       <div className="px-3 sm:px-4 md:px-6 py-3 sm:py-4 h-full flex items-center justify-between">
         <div className="flex items-center gap-2 sm:gap-3 md:gap-4 min-w-0 flex-1">
           {/* Mobile Menu Button */}
