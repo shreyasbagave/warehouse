@@ -164,75 +164,75 @@ const TransportDashboard = () => {
   ).length
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold text-gray-900">Transport Dashboard</h1>
-        <button className="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-green-600">
+    <div className="space-y-4 sm:space-y-6 w-full max-w-full overflow-x-hidden">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
+        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Transport Dashboard</h1>
+        <button className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-primary text-white rounded-lg hover:bg-green-600 text-sm sm:text-base w-full sm:w-auto">
           <Plus className="w-4 h-4" />
-          New Assignment
+          <span>New Assignment</span>
         </button>
       </div>
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <div className="bg-white p-6 rounded-lg shadow">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div className="bg-white p-4 sm:p-6 rounded-lg shadow">
           <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-gray-600">Active Transfers</p>
-              <p className="text-2xl font-bold text-gray-900">
+            <div className="flex-1 min-w-0">
+              <p className="text-xs sm:text-sm text-gray-600">Active Transfers</p>
+              <p className="text-xl sm:text-2xl font-bold text-gray-900">
                 {internalTransfers.length + externalDispatches.length}
               </p>
             </div>
-            <Truck className="w-8 h-8 text-primary" />
+            <Truck className="w-6 h-6 sm:w-8 sm:h-8 text-primary flex-shrink-0 ml-2" />
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-lg shadow">
+        <div className="bg-white p-4 sm:p-6 rounded-lg shadow">
           <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-gray-600">In Transit</p>
-              <p className="text-2xl font-bold text-gray-900">{totalInTransit}</p>
+            <div className="flex-1 min-w-0">
+              <p className="text-xs sm:text-sm text-gray-600">In Transit</p>
+              <p className="text-xl sm:text-2xl font-bold text-gray-900">{totalInTransit}</p>
             </div>
-            <Clock className="w-8 h-8 text-orange-600" />
+            <Clock className="w-6 h-6 sm:w-8 sm:h-8 text-orange-600 flex-shrink-0 ml-2" />
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-lg shadow">
+        <div className="bg-white p-4 sm:p-6 rounded-lg shadow">
           <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-gray-600">Delivered</p>
-              <p className="text-2xl font-bold text-gray-900">{totalDelivered}</p>
+            <div className="flex-1 min-w-0">
+              <p className="text-xs sm:text-sm text-gray-600">Delivered</p>
+              <p className="text-xl sm:text-2xl font-bold text-gray-900">{totalDelivered}</p>
             </div>
-            <CheckCircle className="w-8 h-8 text-green-600" />
+            <CheckCircle className="w-6 h-6 sm:w-8 sm:h-8 text-green-600 flex-shrink-0 ml-2" />
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-lg shadow">
+        <div className="bg-white p-4 sm:p-6 rounded-lg shadow">
           <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-gray-600">Available Vehicles</p>
-              <p className="text-2xl font-bold text-gray-900">12</p>
+            <div className="flex-1 min-w-0">
+              <p className="text-xs sm:text-sm text-gray-600">Available Vehicles</p>
+              <p className="text-xl sm:text-2xl font-bold text-gray-900">12</p>
             </div>
-            <Truck className="w-8 h-8 text-blue-600" />
+            <Truck className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600 flex-shrink-0 ml-2" />
           </div>
         </div>
       </div>
 
       {/* Warehouse Overview */}
-      <div className="bg-white rounded-lg shadow">
-        <div className="p-6 border-b border-gray-200">
-          <div className="flex items-center justify-between">
-            <h2 className="text-xl font-semibold">Warehouse Overview</h2>
-            <button className="text-primary hover:text-green-600 text-sm font-medium">
+      <div className="bg-white rounded-lg shadow overflow-hidden">
+        <div className="p-4 sm:p-6 border-b border-gray-200">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <h2 className="text-lg sm:text-xl font-semibold">Warehouse Overview</h2>
+            <button className="text-primary hover:text-green-600 text-xs sm:text-sm font-medium whitespace-nowrap">
               View All Warehouses
             </button>
           </div>
         </div>
-        <div className="p-6">
-          <div className="mb-4 text-sm text-gray-600">
+        <div className="p-4 sm:p-6">
+          <div className="mb-3 sm:mb-4 text-xs sm:text-sm text-gray-600">
             <p>Showing sample of 10 warehouses (Total: {warehouseData.length} warehouses across Maharashtra)</p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
             {sampleWarehouses.map((warehouse) => (
               <div key={warehouse.id} className="border rounded-lg p-4 hover:shadow-md transition">
                 <div className="flex items-center justify-between mb-2">

@@ -16,7 +16,7 @@ import {
   CheckCircle
 } from 'lucide-react'
 
-const Sidebar = () => {
+const Sidebar = ({ isOpen, onClose }) => {
   const { user } = useAuth()
 
   const farmerMenu = [
@@ -102,39 +102,64 @@ const Sidebar = () => {
   const menuSections = getMenuByRole()
 
   return (
-    <aside className="fixed left-0 top-16 w-64 h-[calc(100vh-4rem)] bg-white border-r border-gray-200 overflow-y-auto">
-      <nav className="p-4">
-        {menuSections.map((section) => (
-          <div key={section.section} className="mb-6">
-            <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2 px-4">
-              {section.section}
-            </h3>
-            <ul className="space-y-1">
-              {section.items.map((item) => {
-                const Icon = item.icon
-                return (
-                  <li key={item.path}>
-                    <NavLink
-                      to={item.path}
-                      className={({ isActive }) =>
-                        `flex items-center gap-3 px-4 py-2 rounded-lg transition text-sm ${
-                          isActive
-                            ? 'bg-primary text-white'
-                            : 'text-gray-700 hover:bg-gray-100'
-                        }`
-                      }
-                    >
-                      <Icon className="w-4 h-4" />
-                      <span className="font-medium">{item.label}</span>
-                    </NavLink>
-                  </li>
-                )
-              })}
-            </ul>
-          </div>
-        ))}
-      </nav>
-    </aside>
+    <>
+      {/* Mobile Overlay */}
+      {isOpen && (
+        <div
+          className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden transition-opacity"
+          onClick={onClose}
+          aria-hidden="true"
+        />
+      )}
+
+      {/* Sidebar */}
+      <aside
+        className={`
+          fixed left-0 top-16 sm:top-20 lg:top-16 w-64 h-[calc(100vh-4rem)] sm:h-[calc(100vh-5rem)] lg:h-[calc(100vh-4rem)] bg-white border-r border-gray-200 overflow-y-auto z-50
+          transform transition-transform duration-300 ease-in-out
+          lg:translate-x-0
+          ${isOpen ? 'translate-x-0' : '-translate-x-full'}
+        `}
+      >
+        <nav className="p-4">
+          {menuSections.map((section) => (
+            <div key={section.section} className="mb-6">
+              <h3 className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2 px-4">
+                {section.section}
+              </h3>
+              <ul className="space-y-1">
+                {section.items.map((item) => {
+                  const Icon = item.icon
+                  return (
+                    <li key={item.path}>
+                      <NavLink
+                        to={item.path}
+                        onClick={() => {
+                          // Close mobile menu when a link is clicked
+                          if (window.innerWidth < 1024) {
+                            onClose()
+                          }
+                        }}
+                        className={({ isActive }) =>
+                          `flex items-center gap-3 px-4 py-2 rounded-lg transition text-sm ${
+                            isActive
+                              ? 'bg-primary text-white'
+                              : 'text-gray-700 hover:bg-gray-100'
+                          }`
+                        }
+                      >
+                        <Icon className="w-4 h-4" />
+                        <span className="font-medium">{item.label}</span>
+                      </NavLink>
+                    </li>
+                  )
+                })}
+              </ul>
+            </div>
+          ))}
+        </nav>
+      </aside>
+    </>
   )
 }
 

@@ -103,30 +103,30 @@ const WarehouseDashboard = () => {
   }
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
+    <div className="space-y-4 sm:space-y-6 w-full max-w-full overflow-x-hidden">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
         <div>
-          <h1 className="text-3xl font-bold text-gray-900">Warehouse Dashboard</h1>
-          <p className="text-gray-600 mt-1">WH-101, Pune</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Warehouse Dashboard</h1>
+          <p className="text-sm sm:text-base text-gray-600 mt-1">WH-101, Pune</p>
         </div>
-        <button className="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-green-600">
+        <button className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-primary text-white rounded-lg hover:bg-green-600 text-sm sm:text-base w-full sm:w-auto">
           <Plus className="w-4 h-4" />
-          New Intake
+          <span>New Intake</span>
         </button>
       </div>
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <div className="bg-white p-6 rounded-lg shadow">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div className="bg-white p-4 sm:p-6 rounded-lg shadow">
           <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-gray-600">Capacity Utilization</p>
-              <p className="text-2xl font-bold text-gray-900">{utilizationPercent.toFixed(1)}%</p>
-              <p className="text-xs text-gray-500 mt-1">
+            <div className="flex-1 min-w-0">
+              <p className="text-xs sm:text-sm text-gray-600">Capacity Utilization</p>
+              <p className="text-xl sm:text-2xl font-bold text-gray-900">{utilizationPercent.toFixed(1)}%</p>
+              <p className="text-xs text-gray-500 mt-1 truncate">
                 {warehouseStats.occupied} / {warehouseStats.totalCapacity} tonnes
               </p>
             </div>
-            <TrendingUp className="w-8 h-8 text-primary" />
+            <TrendingUp className="w-6 h-6 sm:w-8 sm:h-8 text-primary flex-shrink-0 ml-2" />
           </div>
           <div className="mt-4 bg-gray-200 rounded-full h-2">
             <div 
@@ -136,80 +136,80 @@ const WarehouseDashboard = () => {
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-lg shadow">
+        <div className="bg-white p-4 sm:p-6 rounded-lg shadow">
           <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-gray-600">Active Farmers</p>
-              <p className="text-2xl font-bold text-gray-900">{warehouseStats.activeFarmers}</p>
+            <div className="flex-1 min-w-0">
+              <p className="text-xs sm:text-sm text-gray-600">Active Farmers</p>
+              <p className="text-xl sm:text-2xl font-bold text-gray-900">{warehouseStats.activeFarmers}</p>
             </div>
-            <Users className="w-8 h-8 text-blue-600" />
+            <Users className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600 flex-shrink-0 ml-2" />
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-lg shadow">
+        <div className="bg-white p-4 sm:p-6 rounded-lg shadow">
           <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-gray-600">Pending Requests</p>
-              <p className="text-2xl font-bold text-gray-900">{warehouseStats.pendingRequests}</p>
+            <div className="flex-1 min-w-0">
+              <p className="text-xs sm:text-sm text-gray-600">Pending Requests</p>
+              <p className="text-xl sm:text-2xl font-bold text-gray-900">{warehouseStats.pendingRequests}</p>
             </div>
-            <Clock className="w-8 h-8 text-orange-600" />
+            <Clock className="w-6 h-6 sm:w-8 sm:h-8 text-orange-600 flex-shrink-0 ml-2" />
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-lg shadow">
+        <div className="bg-white p-4 sm:p-6 rounded-lg shadow">
           <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-gray-600">In Transit</p>
-              <p className="text-2xl font-bold text-gray-900">{warehouseStats.inTransit}</p>
+            <div className="flex-1 min-w-0">
+              <p className="text-xs sm:text-sm text-gray-600">In Transit</p>
+              <p className="text-xl sm:text-2xl font-bold text-gray-900">{warehouseStats.inTransit}</p>
             </div>
-            <Package className="w-8 h-8 text-purple-600" />
+            <Package className="w-6 h-6 sm:w-8 sm:h-8 text-purple-600 flex-shrink-0 ml-2" />
           </div>
         </div>
       </div>
 
       {/* IoT Sensor Data (for cold storage) */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-        <div className="bg-white p-6 rounded-lg shadow">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
+        <div className="bg-white p-4 sm:p-6 rounded-lg shadow">
           <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-gray-600">Temperature</p>
-              <p className="text-2xl font-bold text-gray-900">4°C</p>
+            <div className="flex-1 min-w-0">
+              <p className="text-xs sm:text-sm text-gray-600">Temperature</p>
+              <p className="text-xl sm:text-2xl font-bold text-gray-900">4°C</p>
               <p className="text-xs text-green-600 mt-1">Optimal</p>
             </div>
-            <Thermometer className="w-8 h-8 text-blue-600" />
+            <Thermometer className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600 flex-shrink-0 ml-2" />
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-lg shadow">
+        <div className="bg-white p-4 sm:p-6 rounded-lg shadow">
           <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-gray-600">Humidity</p>
-              <p className="text-2xl font-bold text-gray-900">65%</p>
+            <div className="flex-1 min-w-0">
+              <p className="text-xs sm:text-sm text-gray-600">Humidity</p>
+              <p className="text-xl sm:text-2xl font-bold text-gray-900">65%</p>
               <p className="text-xs text-green-600 mt-1">Optimal</p>
             </div>
-            <Droplet className="w-8 h-8 text-cyan-600" />
+            <Droplet className="w-6 h-6 sm:w-8 sm:h-8 text-cyan-600 flex-shrink-0 ml-2" />
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-lg shadow">
+        <div className="bg-white p-4 sm:p-6 rounded-lg shadow sm:col-span-2 lg:col-span-1">
           <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-gray-600">Active Products</p>
-              <p className="text-2xl font-bold text-gray-900">{warehouseStats.activeProducts}</p>
+            <div className="flex-1 min-w-0">
+              <p className="text-xs sm:text-sm text-gray-600">Active Products</p>
+              <p className="text-xl sm:text-2xl font-bold text-gray-900">{warehouseStats.activeProducts}</p>
             </div>
-            <Package className="w-8 h-8 text-primary" />
+            <Package className="w-6 h-6 sm:w-8 sm:h-8 text-primary flex-shrink-0 ml-2" />
           </div>
         </div>
       </div>
 
       {/* Product Summary by Quantity */}
-      <div className="bg-white rounded-lg shadow">
-        <div className="p-6 border-b border-gray-200">
-          <h2 className="text-xl font-semibold">Products Stored in WH-101, Pune</h2>
-          <p className="text-sm text-gray-600 mt-1">Total quantity of each product type stored in this warehouse</p>
+      <div className="bg-white rounded-lg shadow overflow-hidden">
+        <div className="p-4 sm:p-6 border-b border-gray-200">
+          <h2 className="text-lg sm:text-xl font-semibold">Products Stored in WH-101, Pune</h2>
+          <p className="text-xs sm:text-sm text-gray-600 mt-1">Total quantity of each product type stored in this warehouse</p>
         </div>
-        <div className="p-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+        <div className="p-4 sm:p-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
             {Object.values(productSummary).map((product, idx) => (
               <div key={idx} className="border rounded-lg p-4 bg-gradient-to-br from-green-50 to-blue-50">
                 <div className="flex items-center justify-between mb-2">
@@ -228,18 +228,18 @@ const WarehouseDashboard = () => {
           </div>
           
           {/* Detailed Breakdown */}
-          <div className="border-t pt-6">
-            <h3 className="font-semibold mb-4">Detailed Product Breakdown</h3>
-            <div className="space-y-4">
+          <div className="border-t pt-4 sm:pt-6">
+            <h3 className="text-base sm:text-lg font-semibold mb-3 sm:mb-4">Detailed Product Breakdown</h3>
+            <div className="space-y-3 sm:space-y-4">
               {Object.values(productSummary).map((product, idx) => (
-                <div key={idx} className="border rounded-lg p-4">
-                  <div className="flex items-center justify-between mb-3">
-                    <h4 className="font-semibold text-lg">{product.product}</h4>
-                    <span className="px-3 py-1 bg-primary text-white rounded-full text-sm font-bold">
+                <div key={idx} className="border rounded-lg p-3 sm:p-4">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 mb-3">
+                    <h4 className="text-base sm:text-lg font-semibold">{product.product}</h4>
+                    <span className="px-2 sm:px-3 py-1 bg-primary text-white rounded-full text-xs sm:text-sm font-bold whitespace-nowrap">
                       Total: {product.totalQuantity} tonnes
                     </span>
                   </div>
-                  <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
                     {product.items.map((item, itemIdx) => (
                       <div key={itemIdx} className="flex items-center justify-between p-3 bg-gray-50 rounded">
                         <div>
@@ -261,41 +261,41 @@ const WarehouseDashboard = () => {
       </div>
 
       {/* Transport Integration - Incoming Transfers */}
-      <div className="bg-white rounded-lg shadow">
-        <div className="p-6 border-b border-gray-200">
-          <div className="flex items-center justify-between">
+      <div className="bg-white rounded-lg shadow overflow-hidden">
+        <div className="p-4 sm:p-6 border-b border-gray-200">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
             <div>
-              <h2 className="text-xl font-semibold flex items-center gap-2">
-                <Truck className="w-5 h-5 text-primary" />
+              <h2 className="text-lg sm:text-xl font-semibold flex items-center gap-2">
+                <Truck className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
                 Incoming Transfers
               </h2>
-              <p className="text-sm text-gray-600 mt-1">Transfers coming to WH-101, Pune</p>
+              <p className="text-xs sm:text-sm text-gray-600 mt-1">Transfers coming to WH-101, Pune</p>
             </div>
-            <span className="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm font-medium">
+            <span className="px-2 sm:px-3 py-1 bg-primary/10 text-primary rounded-full text-xs sm:text-sm font-medium whitespace-nowrap">
               {incoming.length} Active
             </span>
           </div>
         </div>
-        <div className="p-6">
+        <div className="p-4 sm:p-6">
           {incoming.length === 0 ? (
-            <div className="text-center py-8 text-gray-500">
+            <div className="text-center py-6 sm:py-8 text-gray-500 text-sm sm:text-base">
               No incoming transfers
             </div>
           ) : (
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               {incoming.map((transfer) => (
-                <div key={transfer.id} className="border rounded-lg p-4 bg-blue-50">
-                  <div className="flex items-center justify-between mb-3">
-                    <div className="flex items-center gap-3">
-                      <MapPin className="w-5 h-5 text-primary" />
-                      <div>
-                        <div className="font-semibold">{transfer.transferId}</div>
-                        <div className="text-sm text-gray-600">
+                <div key={transfer.id} className="border rounded-lg p-3 sm:p-4 bg-blue-50">
+                  <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 mb-3">
+                    <div className="flex items-center gap-2 sm:gap-3 min-w-0 flex-1">
+                      <MapPin className="w-4 h-4 sm:w-5 sm:h-5 text-primary flex-shrink-0" />
+                      <div className="min-w-0 flex-1">
+                        <div className="font-semibold text-sm sm:text-base truncate">{transfer.transferId}</div>
+                        <div className="text-xs sm:text-sm text-gray-600 truncate">
                           {transfer.from} → <span className="font-medium text-primary">{transfer.to}</span>
                         </div>
                       </div>
                     </div>
-                    <span className={`px-3 py-1 rounded-full text-xs font-medium ${
+                    <span className={`px-2 sm:px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap ${
                       transfer.status === 'In Transit' ? 'bg-yellow-100 text-yellow-800' :
                       transfer.status === 'Delivered' ? 'bg-green-100 text-green-800' :
                       'bg-blue-100 text-blue-800'
@@ -303,7 +303,7 @@ const WarehouseDashboard = () => {
                       {transfer.status}
                     </span>
                   </div>
-                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+                  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4 text-sm">
                     <div>
                       <p className="text-xs text-gray-600">Product</p>
                       <p className="font-semibold">{transfer.product}</p>
@@ -320,8 +320,8 @@ const WarehouseDashboard = () => {
                       <p className="text-xs text-gray-500">{transfer.currentLocation}</p>
                     </div>
                     <div>
-                      <p className="text-xs text-gray-600">Action</p>
-                      <button className="px-3 py-1 bg-primary text-white rounded text-xs hover:bg-green-600">
+                      <p className="text-xs text-gray-600 mb-1">Action</p>
+                      <button className="w-full sm:w-auto px-3 py-1.5 bg-primary text-white rounded text-xs hover:bg-green-600 transition">
                         Track Shipment
                       </button>
                     </div>
@@ -334,15 +334,15 @@ const WarehouseDashboard = () => {
       </div>
 
       {/* Transport Integration - Outgoing Transfers */}
-      <div className="bg-white rounded-lg shadow">
-        <div className="p-6 border-b border-gray-200">
-          <h2 className="text-xl font-semibold flex items-center gap-2">
-            <Truck className="w-5 h-5 text-orange-600" />
+      <div className="bg-white rounded-lg shadow overflow-hidden">
+        <div className="p-4 sm:p-6 border-b border-gray-200">
+          <h2 className="text-lg sm:text-xl font-semibold flex items-center gap-2">
+            <Truck className="w-4 h-4 sm:w-5 sm:h-5 text-orange-600" />
             Outgoing Transfers
           </h2>
-          <p className="text-sm text-gray-600 mt-1">Transfers going out from WH-101, Pune</p>
+          <p className="text-xs sm:text-sm text-gray-600 mt-1">Transfers going out from WH-101, Pune</p>
         </div>
-        <div className="p-6">
+        <div className="p-4 sm:p-6">
           <div className="space-y-4">
             {pendingTransfers.filter(t => t.from.includes('WH-101')).map((transfer) => (
               <div key={transfer.id} className="border rounded-lg p-4">

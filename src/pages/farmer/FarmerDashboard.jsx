@@ -99,79 +99,79 @@ const FarmerDashboard = () => {
   }
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold text-gray-900">Farmer Dashboard</h1>
+    <div className="space-y-4 sm:space-y-6 w-full max-w-full overflow-x-hidden">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
+        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Farmer Dashboard</h1>
         <button 
           onClick={() => navigate('/farmer/storage-request')}
-          className="flex items-center gap-2 px-4 py-2 bg-primary text-white rounded-lg hover:bg-green-600 transition"
+          className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-primary text-white rounded-lg hover:bg-green-600 transition text-sm sm:text-base w-full sm:w-auto"
         >
           <Plus className="w-4 h-4" />
-          New Storage Request
+          <span>New Storage Request</span>
         </button>
       </div>
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <div className="bg-white p-6 rounded-lg shadow">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div className="bg-white p-4 sm:p-6 rounded-lg shadow">
           <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-gray-600">Total Stored</p>
-              <p className="text-2xl font-bold text-gray-900">{totalStored} tonnes</p>
+            <div className="flex-1 min-w-0">
+              <p className="text-xs sm:text-sm text-gray-600">Total Stored</p>
+              <p className="text-xl sm:text-2xl font-bold text-gray-900">{totalStored} tonnes</p>
             </div>
-            <Package className="w-8 h-8 text-primary" />
+            <Package className="w-6 h-6 sm:w-8 sm:h-8 text-primary flex-shrink-0 ml-2" />
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-lg shadow">
+        <div className="bg-white p-4 sm:p-6 rounded-lg shadow">
           <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-gray-600">Storage Fees</p>
-              <p className="text-2xl font-bold text-gray-900">₹{totalFees.toLocaleString()}</p>
+            <div className="flex-1 min-w-0">
+              <p className="text-xs sm:text-sm text-gray-600">Storage Fees</p>
+              <p className="text-xl sm:text-2xl font-bold text-gray-900">₹{totalFees.toLocaleString()}</p>
             </div>
-            <IndianRupee className="w-8 h-8 text-green-600" />
+            <IndianRupee className="w-6 h-6 sm:w-8 sm:h-8 text-green-600 flex-shrink-0 ml-2" />
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-lg shadow">
+        <div className="bg-white p-4 sm:p-6 rounded-lg shadow">
           <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-gray-600">Active Items</p>
-              <p className="text-2xl font-bold text-gray-900">{storedProduce.length}</p>
+            <div className="flex-1 min-w-0">
+              <p className="text-xs sm:text-sm text-gray-600">Active Items</p>
+              <p className="text-xl sm:text-2xl font-bold text-gray-900">{storedProduce.length}</p>
             </div>
-            <Calendar className="w-8 h-8 text-blue-600" />
+            <Calendar className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600 flex-shrink-0 ml-2" />
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-lg shadow">
+        <div className="bg-white p-4 sm:p-6 rounded-lg shadow">
           <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-gray-600">Pending Requests</p>
-              <p className="text-2xl font-bold text-gray-900">
+            <div className="flex-1 min-w-0">
+              <p className="text-xs sm:text-sm text-gray-600">Pending Requests</p>
+              <p className="text-xl sm:text-2xl font-bold text-gray-900">
                 {farmerStorageRequests.filter(r => r.status === 'Pending Approval').length}
               </p>
             </div>
-            <FileText className="w-8 h-8 text-orange-600" />
+            <FileText className="w-6 h-6 sm:w-8 sm:h-8 text-orange-600 flex-shrink-0 ml-2" />
           </div>
         </div>
       </div>
 
       {/* Storage Requests Status */}
-      <div className="bg-white rounded-lg shadow">
-        <div className="p-6 border-b border-gray-200">
-          <div className="flex items-center justify-between">
+      <div className="bg-white rounded-lg shadow overflow-hidden">
+        <div className="p-4 sm:p-6 border-b border-gray-200">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
             <div>
-              <h2 className="text-xl font-semibold">Storage Requests</h2>
-              <p className="text-sm text-gray-600 mt-1">Track your storage request status and payments</p>
+              <h2 className="text-lg sm:text-xl font-semibold">Storage Requests</h2>
+              <p className="text-xs sm:text-sm text-gray-600 mt-1">Track your storage request status and payments</p>
             </div>
             {totalPendingPayment > 0 && (
-              <span className="px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-sm font-medium">
+              <span className="px-2 sm:px-3 py-1 bg-orange-100 text-orange-800 rounded-full text-xs sm:text-sm font-medium whitespace-nowrap">
                 ₹{totalPendingPayment.toLocaleString()} Pending Payment
               </span>
             )}
           </div>
         </div>
-        <div className="p-6">
+        <div className="p-4 sm:p-6">
           {farmerStorageRequests.length === 0 ? (
             <div className="text-center py-12 text-gray-500">
               <FileText className="w-12 h-12 mx-auto mb-4 text-gray-300" />
@@ -179,28 +179,28 @@ const FarmerDashboard = () => {
               <p className="text-sm mt-1">Create a new storage request to get started</p>
             </div>
           ) : (
-            <div className="space-y-4">
+            <div className="space-y-3 sm:space-y-4">
               {farmerStorageRequests.map((request) => (
-                <div key={request.id} className="border rounded-lg p-6 hover:shadow-md transition">
-                  <div className="flex items-start justify-between mb-4">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-2">
-                        <div className={`p-2 rounded-lg ${
+                <div key={request.id} className="border rounded-lg p-4 sm:p-6 hover:shadow-md transition">
+                  <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-3 sm:gap-4 mb-4">
+                    <div className="flex-1 min-w-0">
+                      <div className="flex flex-col sm:flex-row sm:items-center gap-3 mb-3">
+                        <div className={`p-2 rounded-lg flex-shrink-0 ${
                           request.status === 'Approved' ? 'bg-green-100' :
                           request.status === 'Rejected' ? 'bg-red-100' :
                           'bg-orange-100'
                         }`}>
-                          <Package className={`w-5 h-5 ${
+                          <Package className={`w-4 h-4 sm:w-5 sm:h-5 ${
                             request.status === 'Approved' ? 'text-green-600' :
                             request.status === 'Rejected' ? 'text-red-600' :
                             'text-orange-600'
                           }`} />
                         </div>
-                        <div className="flex-1">
-                          <h3 className="font-semibold text-lg">{request.product}</h3>
-                          <p className="text-sm text-gray-600">Warehouse: {request.warehouse}</p>
+                        <div className="flex-1 min-w-0">
+                          <h3 className="font-semibold text-base sm:text-lg truncate">{request.product}</h3>
+                          <p className="text-xs sm:text-sm text-gray-600 truncate">Warehouse: {request.warehouse}</p>
                         </div>
-                        <span className={`px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap ${
+                        <span className={`px-2 sm:px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap self-start ${
                           request.status === 'Approved' ? 'bg-green-100 text-green-800' :
                           request.status === 'Rejected' ? 'bg-red-100 text-red-800' :
                           'bg-orange-100 text-orange-800'
@@ -209,7 +209,7 @@ const FarmerDashboard = () => {
                         </span>
                       </div>
                       
-                      <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-4">
+                      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4 mt-4">
                         <div>
                           <p className="text-xs text-gray-600">Quantity</p>
                           <p className="font-semibold">{request.quantity} {request.unit}</p>
@@ -252,13 +252,13 @@ const FarmerDashboard = () => {
       </div>
 
       {/* Warehouse-wise Product Summary */}
-      <div className="bg-white rounded-lg shadow">
-        <div className="p-6 border-b border-gray-200">
-          <h2 className="text-xl font-semibold">Products by Warehouse</h2>
-          <p className="text-sm text-gray-600 mt-1">View your stored products organized by warehouse location</p>
+      <div className="bg-white rounded-lg shadow overflow-hidden">
+        <div className="p-4 sm:p-6 border-b border-gray-200">
+          <h2 className="text-lg sm:text-xl font-semibold">Products by Warehouse</h2>
+          <p className="text-xs sm:text-sm text-gray-600 mt-1">View your stored products organized by warehouse location</p>
         </div>
-        <div className="p-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="p-4 sm:p-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {Object.values(warehouseWiseProducts).map((warehouse, idx) => (
               <div 
                 key={idx} 
@@ -295,11 +295,11 @@ const FarmerDashboard = () => {
       </div>
 
       {/* Stored Produce Table */}
-      <div className="bg-white rounded-lg shadow">
-        <div className="p-6 border-b border-gray-200">
-          <div className="flex items-center justify-between">
-            <h2 className="text-xl font-semibold">Stored Produce</h2>
-            <div className="flex items-center gap-2">
+      <div className="bg-white rounded-lg shadow overflow-hidden">
+        <div className="p-4 sm:p-6 border-b border-gray-200">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <h2 className="text-lg sm:text-xl font-semibold">Stored Produce</h2>
+            <div className="flex items-center gap-2 flex-wrap">
               <button 
                 onClick={() => setShowSearchModal(!showSearchModal)}
                 className="p-2 hover:bg-gray-100 rounded-lg transition"

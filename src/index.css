@@ -20,3 +20,71 @@ body {
   min-height: 100vh;
 }
 
+/* Mobile responsive utilities */
+@media (max-width: 640px) {
+  /* Ensure tables are scrollable on mobile */
+  .table-responsive {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  
+  /* Better touch targets for mobile */
+  button, a {
+    min-height: 44px;
+    min-width: 44px;
+  }
+  
+  /* Prevent horizontal overflow */
+  body {
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100vw;
+  }
+  
+  /* Ensure content doesn't overflow */
+  * {
+    max-width: 100%;
+  }
+  
+  /* Fix for fixed header */
+  main {
+    padding-top: 80px !important;
+    width: 100% !important;
+    max-width: 100vw !important;
+  }
+  
+  /* Ensure all containers don't overflow */
+  div[class*="space-y"],
+  div[class*="grid"],
+  div[class*="flex"] {
+    max-width: 100%;
+  }
+  
+  /* Ensure all cards and containers are mobile-friendly */
+  .bg-white.rounded-lg {
+    max-width: 100%;
+    overflow-x: hidden;
+  }
+  
+  /* Fix for any fixed widths */
+  [class*="w-64"],
+  [class*="w-72"],
+  [class*="w-80"] {
+    max-width: calc(100vw - 2rem);
+  }
+}
+
+/* Ensure proper viewport on all devices */
+html {
+  width: 100%;
+  overflow-x: hidden;
+  -webkit-text-size-adjust: 100%;
+  -ms-text-size-adjust: 100%;
+}
+
+body {
+  width: 100%;
+  overflow-x: hidden;
+  position: relative;
+}
+

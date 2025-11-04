@@ -46,33 +46,34 @@ const Login = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-green-50 to-blue-50 flex items-center justify-center p-4">
-      <div className="absolute top-4 left-4">
+      <div className="absolute top-2 left-2 sm:top-4 sm:left-4">
         <Link
           to="/farmer/dashboard"
-          className="flex items-center gap-2 px-4 py-2 bg-white rounded-lg shadow hover:bg-gray-50 text-gray-700 transition"
+          className="flex items-center gap-2 px-2 sm:px-4 py-2 bg-white rounded-lg shadow hover:bg-gray-50 text-gray-700 transition text-xs sm:text-sm"
         >
-          <Home className="w-4 h-4" />
-          <span>Back to Dashboard</span>
+          <Home className="w-3 h-3 sm:w-4 sm:h-4" />
+          <span className="hidden sm:inline">Back to Dashboard</span>
+          <span className="sm:hidden">Back</span>
         </Link>
       </div>
-      <div className="bg-white rounded-2xl shadow-xl p-8 w-full max-w-md">
-        <div className="flex flex-col items-center mb-8">
-          <div className="bg-primary p-3 rounded-full mb-4">
-            <Warehouse className="w-8 h-8 text-white" />
+      <div className="bg-white rounded-xl sm:rounded-2xl shadow-xl p-4 sm:p-8 w-full max-w-md">
+        <div className="flex flex-col items-center mb-6 sm:mb-8">
+          <div className="bg-primary p-2 sm:p-3 rounded-full mb-3 sm:mb-4">
+            <Warehouse className="w-6 h-6 sm:w-8 sm:h-8 text-white" />
           </div>
-          <h1 className="text-3xl font-bold text-gray-900">FWMS</h1>
-          <p className="text-gray-600 mt-2">Farmer Warehouse Management System</p>
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">FWMS</h1>
+          <p className="text-sm sm:text-base text-gray-600 mt-2 text-center">Farmer Warehouse Management System</p>
         </div>
 
-        <form onSubmit={handleSubmit} className="space-y-6">
+        <form onSubmit={handleSubmit} className="space-y-4 sm:space-y-6">
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-2">
               Login Type
             </label>
             <select
               value={formData.loginType}
               onChange={(e) => setFormData({ ...formData, loginType: e.target.value })}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+              className="w-full px-3 sm:px-4 py-2 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
             >
               <option value="phone">Phone Number</option>
               <option value="aadhaar">Aadhaar Number</option>
@@ -81,7 +82,7 @@ const Login = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-2">
               {formData.loginType === 'phone' ? 'Phone Number' : 
                formData.loginType === 'aadhaar' ? 'Aadhaar Number' : 'Farmer ID'}
             </label>
@@ -89,7 +90,7 @@ const Login = () => {
               type="text"
               value={formData.identifier}
               onChange={(e) => setFormData({ ...formData, identifier: e.target.value })}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+              className="w-full px-3 sm:px-4 py-2 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
               placeholder={formData.loginType === 'phone' ? 'Enter phone number' : 
                           formData.loginType === 'aadhaar' ? 'Enter Aadhaar number' : 
                           'Enter Farmer ID'}
@@ -98,25 +99,25 @@ const Login = () => {
           </div>
 
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-xs sm:text-sm font-medium text-gray-700 mb-2">
               Password
             </label>
               <input
                 type="password"
                 value={formData.password}
                 onChange={(e) => setFormData({ ...formData, password: e.target.value })}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
+                className="w-full px-3 sm:px-4 py-2 text-sm sm:text-base border border-gray-300 rounded-lg focus:ring-2 focus:ring-primary focus:border-transparent"
                 placeholder="Enter any password (not required in mockup)"
               />
           </div>
 
           {error && (
-            <div className="bg-red-50 border border-red-200 text-red-700 px-4 py-3 rounded-lg">
+            <div className="bg-red-50 border border-red-200 text-red-700 px-3 sm:px-4 py-2 sm:py-3 rounded-lg text-xs sm:text-sm">
               {error}
             </div>
           )}
 
-          <div className="text-sm text-gray-600 bg-blue-50 p-4 rounded-lg">
+          <div className="text-xs sm:text-sm text-gray-600 bg-blue-50 p-3 sm:p-4 rounded-lg">
             <p className="mb-2 font-medium">Mockup Mode - No Authentication Required:</p>
             <ul className="list-disc list-inside space-y-1 text-xs">
               <li>Any identifier + any password = Login</li>
@@ -129,14 +130,14 @@ const Login = () => {
 
           <button
             type="submit"
-            className="w-full bg-primary text-white py-3 rounded-lg font-medium hover:bg-green-600 transition shadow-lg"
+            className="w-full bg-primary text-white py-2.5 sm:py-3 rounded-lg font-medium hover:bg-green-600 transition shadow-lg text-sm sm:text-base"
           >
             Login
           </button>
         </form>
 
-        <div className="mt-6 text-center">
-          <p className="text-sm text-gray-600">
+        <div className="mt-4 sm:mt-6 text-center">
+          <p className="text-xs sm:text-sm text-gray-600">
             Don't have an account?{' '}
             <a href="/signup" className="text-primary font-medium hover:underline">
               Sign up

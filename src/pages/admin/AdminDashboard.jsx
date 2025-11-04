@@ -231,76 +231,77 @@ const AdminDashboard = () => {
   }
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <h1 className="text-3xl font-bold text-gray-900">Admin Dashboard</h1>
+    <div className="space-y-4 sm:space-y-6 w-full max-w-full overflow-x-hidden">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
+        <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Admin Dashboard</h1>
         <div className="flex gap-2">
-          <button className="px-4 py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200">
+          <button className="p-2 sm:px-4 sm:py-2 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200">
             <Settings className="w-4 h-4" />
           </button>
-          <button className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-green-600">
-            Export Report
+          <button className="px-3 sm:px-4 py-2 bg-primary text-white rounded-lg hover:bg-green-600 text-sm sm:text-base">
+            <span className="hidden sm:inline">Export Report</span>
+            <span className="sm:hidden">Export</span>
           </button>
         </div>
       </div>
 
       {/* Overview Stats */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <div className="bg-white p-6 rounded-lg shadow">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div className="bg-white p-4 sm:p-6 rounded-lg shadow">
           <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-gray-600">Total Warehouses</p>
-              <p className="text-2xl font-bold text-gray-900">{overviewStats.totalWarehouses}</p>
-            <p className="text-xs text-gray-500 mt-1">Across Maharashtra</p>
+            <div className="flex-1 min-w-0">
+              <p className="text-xs sm:text-sm text-gray-600">Total Warehouses</p>
+              <p className="text-xl sm:text-2xl font-bold text-gray-900">{overviewStats.totalWarehouses}</p>
+              <p className="text-xs text-gray-500 mt-1">Across Maharashtra</p>
             </div>
-            <Warehouse className="w-8 h-8 text-primary" />
+            <Warehouse className="w-6 h-6 sm:w-8 sm:h-8 text-primary flex-shrink-0 ml-2" />
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-lg shadow">
+        <div className="bg-white p-4 sm:p-6 rounded-lg shadow">
           <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-gray-600">Total Farmers</p>
-              <p className="text-2xl font-bold text-gray-900">{overviewStats.totalFarmers.toLocaleString()}</p>
+            <div className="flex-1 min-w-0">
+              <p className="text-xs sm:text-sm text-gray-600">Total Farmers</p>
+              <p className="text-xl sm:text-2xl font-bold text-gray-900">{overviewStats.totalFarmers.toLocaleString()}</p>
             </div>
-            <Users className="w-8 h-8 text-blue-600" />
+            <Users className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600 flex-shrink-0 ml-2" />
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-lg shadow">
+        <div className="bg-white p-4 sm:p-6 rounded-lg shadow">
           <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-gray-600">Capacity Utilization</p>
-              <p className="text-2xl font-bold text-gray-900">
+            <div className="flex-1 min-w-0">
+              <p className="text-xs sm:text-sm text-gray-600">Capacity Utilization</p>
+              <p className="text-xl sm:text-2xl font-bold text-gray-900">
                 {stats.avgUtilization}%
               </p>
-              <p className="text-xs text-gray-500 mt-1">
+              <p className="text-xs text-gray-500 mt-1 truncate">
                 {stats.totalOccupied.toLocaleString()} / {stats.totalCapacity.toLocaleString()} tonnes
               </p>
               <p className="text-xs text-gray-500 mt-1">
                 {stats.regions} Regions, {stats.districts} Districts
               </p>
             </div>
-            <TrendingUp className="w-8 h-8 text-green-600" />
+            <TrendingUp className="w-6 h-6 sm:w-8 sm:h-8 text-green-600 flex-shrink-0 ml-2" />
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-lg shadow">
+        <div className="bg-white p-4 sm:p-6 rounded-lg shadow">
           <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-gray-600">Total Revenue</p>
-              <p className="text-2xl font-bold text-gray-900">
+            <div className="flex-1 min-w-0">
+              <p className="text-xs sm:text-sm text-gray-600">Total Revenue</p>
+              <p className="text-xl sm:text-2xl font-bold text-gray-900">
                 ₹{overviewStats.totalRevenue.toLocaleString()}
               </p>
             </div>
-            <IndianRupee className="w-8 h-8 text-yellow-600" />
+            <IndianRupee className="w-6 h-6 sm:w-8 sm:h-8 text-yellow-600 flex-shrink-0 ml-2" />
           </div>
         </div>
       </div>
 
       {/* Charts */}
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div className="bg-white rounded-lg shadow p-6">
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+        <div className="bg-white rounded-lg shadow p-4 sm:p-6 overflow-hidden">
           <h2 className="text-xl font-semibold mb-4">Warehouse Utilization</h2>
           <ResponsiveContainer width="100%" height={300}>
             <BarChart data={topWarehouses}>

@@ -115,27 +115,28 @@ const DriverDashboard = () => {
   const totalTrips = trips.length
 
   return (
-    <div className="space-y-6">
-      <div className="flex items-center justify-between">
-        <div>
-          <h1 className="text-3xl font-bold text-gray-900">Driver Dashboard</h1>
-          <p className="text-gray-600 mt-1">Welcome, {user?.name || 'Driver'}</p>
-          <div className="flex items-center gap-4 mt-2 text-sm text-gray-600">
-            <span>License: {user?.license || 'DL1234567890'}</span>
-            <span>•</span>
-            <span>Vehicle: {user?.vehicleNumber || 'TRK-1234'}</span>
+    <div className="space-y-4 sm:space-y-6 w-full max-w-full overflow-x-hidden">
+      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
+        <div className="flex-1 min-w-0">
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Driver Dashboard</h1>
+          <p className="text-sm sm:text-base text-gray-600 mt-1">Welcome, {user?.name || 'Driver'}</p>
+          <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 mt-2 text-xs sm:text-sm text-gray-600">
+            <span className="truncate">License: {user?.license || 'DL1234567890'}</span>
+            <span className="hidden sm:inline">•</span>
+            <span className="truncate">Vehicle: {user?.vehicleNumber || 'TRK-1234'}</span>
           </div>
         </div>
         <div className="flex items-center gap-2">
           <button
             onClick={() => navigate('/driver/earnings')}
-            className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-green-600 font-medium flex items-center gap-2"
+            className="flex items-center justify-center gap-2 px-3 sm:px-4 py-2 bg-primary text-white rounded-lg hover:bg-green-600 font-medium text-sm sm:text-base w-full sm:w-auto"
           >
             <IndianRupee className="w-4 h-4" />
-            View Earnings
+            <span className="hidden sm:inline">View Earnings</span>
+            <span className="sm:hidden">Earnings</span>
           </button>
           <button className="relative p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-full">
-            <Bell className="w-6 h-6" />
+            <Bell className="w-5 h-5 sm:w-6 sm:h-6" />
             {notifications.filter(n => !n.read).length > 0 && (
               <span className="absolute top-0 right-0 w-3 h-3 bg-red-500 rounded-full"></span>
             )}
@@ -144,62 +145,62 @@ const DriverDashboard = () => {
       </div>
 
       {/* Stats Cards */}
-      <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
-        <div className="bg-white p-6 rounded-lg shadow">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6">
+        <div className="bg-white p-4 sm:p-6 rounded-lg shadow">
           <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-gray-600">Active Trips</p>
-              <p className="text-2xl font-bold text-gray-900">{activeTrips.length}</p>
+            <div className="flex-1 min-w-0">
+              <p className="text-xs sm:text-sm text-gray-600">Active Trips</p>
+              <p className="text-xl sm:text-2xl font-bold text-gray-900">{activeTrips.length}</p>
             </div>
-            <Truck className="w-8 h-8 text-blue-600" />
+            <Truck className="w-6 h-6 sm:w-8 sm:h-8 text-blue-600 flex-shrink-0 ml-2" />
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-lg shadow">
+        <div className="bg-white p-4 sm:p-6 rounded-lg shadow">
           <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-gray-600">Total Earnings</p>
-              <p className="text-2xl font-bold text-gray-900">₹{totalEarnings.toLocaleString()}</p>
-              <p className="text-xs text-gray-500 mt-1">Pending: ₹{pendingEarnings.toLocaleString()}</p>
+            <div className="flex-1 min-w-0">
+              <p className="text-xs sm:text-sm text-gray-600">Total Earnings</p>
+              <p className="text-xl sm:text-2xl font-bold text-gray-900">₹{totalEarnings.toLocaleString()}</p>
+              <p className="text-xs text-gray-500 mt-1 truncate">Pending: ₹{pendingEarnings.toLocaleString()}</p>
             </div>
-            <IndianRupee className="w-8 h-8 text-green-600" />
+            <IndianRupee className="w-6 h-6 sm:w-8 sm:h-8 text-green-600 flex-shrink-0 ml-2" />
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-lg shadow">
+        <div className="bg-white p-4 sm:p-6 rounded-lg shadow">
           <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-gray-600">Completed Trips</p>
-              <p className="text-2xl font-bold text-gray-900">{completedTrips.length}</p>
+            <div className="flex-1 min-w-0">
+              <p className="text-xs sm:text-sm text-gray-600">Completed Trips</p>
+              <p className="text-xl sm:text-2xl font-bold text-gray-900">{completedTrips.length}</p>
               <p className="text-xs text-gray-500 mt-1">Total: {totalTrips} trips</p>
             </div>
-            <CheckCircle className="w-8 h-8 text-primary" />
+            <CheckCircle className="w-6 h-6 sm:w-8 sm:h-8 text-primary flex-shrink-0 ml-2" />
           </div>
         </div>
 
-        <div className="bg-white p-6 rounded-lg shadow">
+        <div className="bg-white p-4 sm:p-6 rounded-lg shadow">
           <div className="flex items-center justify-between">
-            <div>
-              <p className="text-sm text-gray-600">Notifications</p>
-              <p className="text-2xl font-bold text-gray-900">
+            <div className="flex-1 min-w-0">
+              <p className="text-xs sm:text-sm text-gray-600">Notifications</p>
+              <p className="text-xl sm:text-2xl font-bold text-gray-900">
                 {notifications.filter(n => !n.read).length}
               </p>
               <p className="text-xs text-gray-500 mt-1">Unread</p>
             </div>
-            <Bell className="w-8 h-8 text-orange-600" />
+            <Bell className="w-6 h-6 sm:w-8 sm:h-8 text-orange-600 flex-shrink-0 ml-2" />
           </div>
         </div>
       </div>
 
       {/* Active Trips */}
-      <div className="bg-white rounded-lg shadow">
-        <div className="p-6 border-b border-gray-200">
-          <h2 className="text-xl font-semibold flex items-center gap-2">
-            <Truck className="w-5 h-5 text-primary" />
+      <div className="bg-white rounded-lg shadow overflow-hidden">
+        <div className="p-4 sm:p-6 border-b border-gray-200">
+          <h2 className="text-lg sm:text-xl font-semibold flex items-center gap-2">
+            <Truck className="w-4 h-4 sm:w-5 sm:h-5 text-primary" />
             Active Trips
           </h2>
         </div>
-        <div className="p-6">
+        <div className="p-4 sm:p-6">
           {activeTrips.length === 0 ? (
             <div className="text-center py-12 text-gray-500">
               <Truck className="w-12 h-12 mx-auto mb-4 text-gray-300" />
@@ -216,14 +217,14 @@ const DriverDashboard = () => {
       </div>
 
       {/* Completed Trips */}
-      <div className="bg-white rounded-lg shadow">
-        <div className="p-6 border-b border-gray-200">
-          <h2 className="text-xl font-semibold flex items-center gap-2">
-            <CheckCircle className="w-5 h-5 text-green-600" />
+      <div className="bg-white rounded-lg shadow overflow-hidden">
+        <div className="p-4 sm:p-6 border-b border-gray-200">
+          <h2 className="text-lg sm:text-xl font-semibold flex items-center gap-2">
+            <CheckCircle className="w-4 h-4 sm:w-5 sm:h-5 text-green-600" />
             Completed Trips
           </h2>
         </div>
-        <div className="p-6">
+        <div className="p-4 sm:p-6">
           {completedTrips.length === 0 ? (
             <div className="text-center py-12 text-gray-500">
               <p>No completed trips yet</p>
@@ -239,14 +240,14 @@ const DriverDashboard = () => {
       </div>
 
       {/* Notifications */}
-      <div className="bg-white rounded-lg shadow">
-        <div className="p-6 border-b border-gray-200">
-          <h2 className="text-xl font-semibold flex items-center gap-2">
-            <Bell className="w-5 h-5 text-orange-600" />
+      <div className="bg-white rounded-lg shadow overflow-hidden">
+        <div className="p-4 sm:p-6 border-b border-gray-200">
+          <h2 className="text-lg sm:text-xl font-semibold flex items-center gap-2">
+            <Bell className="w-4 h-4 sm:w-5 sm:h-5 text-orange-600" />
             Notifications
           </h2>
         </div>
-        <div className="p-6">
+        <div className="p-4 sm:p-6">
           <div className="space-y-3">
             {notifications.map((notification) => (
               <div
